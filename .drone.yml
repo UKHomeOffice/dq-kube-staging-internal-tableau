@@ -15,7 +15,7 @@ pipeline:
       - NOTPROD_KUBE_SERVER
     when:
       event: push
-      branch: master
+      branch: 
 
   # deploy_to_prod:
   #   image: quay.io/ukhomeofficedigital/kd
