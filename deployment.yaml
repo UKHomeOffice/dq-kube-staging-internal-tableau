@@ -5,11 +5,14 @@ metadata:
   name: staginginternaltableau
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   template:
     metadata:
       labels:
         name: staginginternaltableau
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: opensslsidekick
           image: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:b489e4b631ebddf4513ca536b01e2cd80af60f6d
