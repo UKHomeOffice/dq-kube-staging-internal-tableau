@@ -5,7 +5,7 @@ pipeline:
     environment:
       - KUBE_NAMESPACE=dq-apps-notprod
       - INSECURE_SKIP_TLS_VERIFY=true
-      - URL=analysis.staging.notprod.dq.homeoffice.gov.uk
+      - URL=analysis-staging.notprod.dq.homeoffice.gov.uk
     commands:
       - export KUBE_TOKEN=$$NOTPROD_KUBE_TOKEN
       - export KUBE_SERVER=$$NOTPROD_KUBE_SERVER
