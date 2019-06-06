@@ -7,10 +7,14 @@ pipeline:
       - INSECURE_SKIP_TLS_VERIFY=true
       - URL=analysis-staging.notprod.dq.homeoffice.gov.uk
     commands:
+      - export KEYCLOAK_SECRET=$$NOTPROD_KEYCLOAK_SECRET
+      - export KEYCLOAK_DISCOVERY_URL=$$NOTPROD_KEYCLOAK_DISCOVERY_URL
       - export KUBE_TOKEN=$$NOTPROD_KUBE_TOKEN
       - export KUBE_SERVER=$$NOTPROD_KUBE_SERVER
       - kd -f network-policy.yaml -f service.yaml -f ingress.yaml -f deployment.yaml
     secrets:
+      - NOTPROD_KEYCLOAK_SECRET
+      - NOTPROD_KEYCLOAK_DISCOVERY_URL
       - NOTPROD_KUBE_TOKEN
       - NOTPROD_KUBE_SERVER
     when:
