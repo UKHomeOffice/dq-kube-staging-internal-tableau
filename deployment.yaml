@@ -30,6 +30,45 @@ spec:
           ports:
             - containerPort: 5000
 
+        - name: keycloak-proxy
+          ports:
+            - name: http
+              containerPort: 8081
+          image: quay.io/ukhomeofficedigital/go-keycloak-proxy:v2.3.0
+          securityContext:
+            runAsNonRoot: true
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: PROXY_CLIENT_ID
+              value: staginginternaltableau
+            - name: PROXY_LISTEN
+              value: 0.0.0.0:8081
+            - name: PROXY_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: staginginternaltableau
+                  key: keycloak_secret
+            - name: PROXY_DISCOVERY_URL
+              valueFrom:
+                secretKeyRef:
+                  name: staginginternaltableau
+                  key: keycloak_discovery_url
+            - name: PROXY_UPSTREAM_URL
+              value: http://127.0.0.1:5000
+          args:
+            - --resources
+            - uri=/*|roles=stagingtableau
+            - --enable-logging
+            - --enable-json-logging
+            - --verbose
+            - --upstream-timeout
+            - 60s
+            - --upstream-response-header-timeout
+            - 60s
+
         - name: proxy
           image: quay.io/ukhomeofficedigital/nginx-proxy-proxy-redirect
           securityContext:
