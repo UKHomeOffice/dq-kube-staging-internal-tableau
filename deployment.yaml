@@ -70,7 +70,7 @@ spec:
             - 60s
 
         - name: proxy
-          image: quay.io/ukhomeofficedigital/nginx-proxy-proxy-redirect
+          image: quay.io/ukhomeofficedigital/nginx-proxy-redirect
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
