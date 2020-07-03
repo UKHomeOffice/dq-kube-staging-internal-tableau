@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: staginginternaltableau
+  name: staginginternaltableau-external
   labels:
     #stable.k8s.psg.io/kcm.class: default
     cert-manager.io/solver: http01
@@ -18,7 +18,7 @@ spec:
   tls:
   - hosts:
     - {{ .URL }}
-    secretName: staginginternaltableau-tls-cmio
+    secretName: staginginternaltableau-external-tls-cmio
   rules:
   - host: {{ .URL }}
     http:
