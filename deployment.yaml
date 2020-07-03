@@ -5,6 +5,9 @@ metadata:
   name: staginginternaltableau
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: staginginternaltableau
   revisionHistoryLimit: 3
   template:
     metadata:
