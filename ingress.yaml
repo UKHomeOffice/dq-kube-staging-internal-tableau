@@ -18,7 +18,7 @@ spec:
   tls:
   - hosts:
     - {{ .URL }}
-    secretName: staginginternaltableau-tls-cmio
+    secretName: staginginternaltableau-external-tls-cmio
   rules:
   - host: {{ .URL }}
     http:
