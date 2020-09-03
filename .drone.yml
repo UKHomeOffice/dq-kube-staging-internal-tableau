@@ -3,6 +3,7 @@ pipeline:
   deploy_to_notprod:
     image: quay.io/ukhomeofficedigital/kd
     environment:
+      - ENV=notprod
       - KUBE_NAMESPACE=dq-apps-notprod
       - INSECURE_SKIP_TLS_VERIFY=true
       - URL=analysis-staging.notprod.dq.homeoffice.gov.uk
@@ -23,6 +24,7 @@ pipeline:
   deploy_to_prod:
     image: quay.io/ukhomeofficedigital/kd
     environment:
+      - ENV=prod
       - KUBE_NAMESPACE=dq-apps
       - INSECURE_SKIP_TLS_VERIFY=true
       - URL=analysis-staging.dq.homeoffice.gov.uk
