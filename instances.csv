@@ -1,0 +1,17 @@
+Instance  ID  Instance  Name  Instance  Type
+i-0c094e475d227e7ff  ec2-ext-tableau-linux-apps-prod-dq          c5.2xlarge
+i-0d7430d03ced52a72  ec2-ext-tableau-linux-apps-prod-dq          c5.4xlarge
+i-021c4c14fde1144ce  ec2-internal-tableau-linux-apps-prod-dq     r5d.4xlarge
+i-0d2b3775dd2463980  ec2-analysis-ops-prod-dq                    m4.xlarge
+i-018b48268b5e395f8  ec2-staging-ext-tableau-linux-apps-prod-dq  c5.4xlarge
+i-01ea21af83802f5a9  bastion-linux-ops-prod-dq                   t2.medium
+i-04a0dd1d91f61eedf  bastion-win-ops-prod-dq                     t2.large
+i-09e271ff3e8683e45  bastion2-win-ops-prod-dq                    t2.large
+i-09d0bcb77e9e545d3  bastion3-win-ops-prod-dq                    t2.large
+i-0091cf48bc6950b2f  bastion4-win-ops-prod-dq                    t2.large
+i-0996436df5cda972e  ec2-dev-tableau-ops-prod-dq                 t2.large
+i-041c88e535f0c7c50  ec2-deployment-tableau-ops-prod-dq          t2.large
+i-06aff4268f81b4a86  ec2-haproxy-peering-prod-dq                 t2.micro
+i-0c939274d96f395bf  ec2-haproxy-peering-prod-dq                 t2.micro
+i-036e26a9742422977  ec2-internal-tableau-linux-apps-prod-dq     r5d.4xlarge
+i-04833e2735915405b  ec2-staging-internal-tableau-apps-prod-dq   r5d.4xlarge
