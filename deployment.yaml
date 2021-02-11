@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: opensslsidekick
-          image: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:481646faab6a6b3bedb62045664d12f54f524677
+          image: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:5be61718809052e52e7620e6d2b77259cd901ebf
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true
