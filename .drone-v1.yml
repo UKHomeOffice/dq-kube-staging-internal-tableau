@@ -1,0 +1,67 @@
+---
+kind: pipeline
+name: default
+type: kubernetes
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy_to_notprod
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/kd
+  commands:
+  - export KEYCLOAK_SECRET=$$NOTPROD_KEYCLOAK_SECRET
+  - export KEYCLOAK_DISCOVERY_URL=$$NOTPROD_KEYCLOAK_DISCOVERY_URL
+  - export KUBE_TOKEN=$$NOTPROD_KUBE_TOKEN
+  - export KUBE_SERVER=$$NOTPROD_KUBE_SERVER
+  - kd --delete -f deployment.yaml
+  - kd -f network-policy.yaml -f service.yaml -f ingress.yaml -f secret.yaml -f deployment.yaml
+  environment:
+    ENV: notprod
+    INSECURE_SKIP_TLS_VERIFY: true
+    KUBE_NAMESPACE: dq-apps-notprod
+    NOTPROD_KEYCLOAK_DISCOVERY_URL:
+      from_secret: NOTPROD_KEYCLOAK_DISCOVERY_URL
+    NOTPROD_KEYCLOAK_SECRET:
+      from_secret: NOTPROD_KEYCLOAK_SECRET
+    NOTPROD_KUBE_SERVER:
+      from_secret: NOTPROD_KUBE_SERVER
+    NOTPROD_KUBE_TOKEN:
+      from_secret: NOTPROD_KUBE_TOKEN
+    URL: analysis-staging.notprod.dq.homeoffice.gov.uk
+  when:
+    event:
+    - push
+
+- name: deploy_to_prod
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/kd
+  commands:
+  - export KEYCLOAK_SECRET=$$PROD_KEYCLOAK_SECRET
+  - export KEYCLOAK_DISCOVERY_URL=$$PROD_KEYCLOAK_DISCOVERY_URL
+  - export KUBE_TOKEN=$$PROD_KUBE_TOKEN
+  - export KUBE_SERVER=$$PROD_KUBE_SERVER
+  - kd --delete -f deployment.yaml
+  - kd -f network-policy.yaml -f service.yaml -f ingress.yaml -f secret.yaml -f deployment.yaml
+  environment:
+    ENV: prod
+    INSECURE_SKIP_TLS_VERIFY: true
+    KUBE_NAMESPACE: dq-apps
+    PROD_KEYCLOAK_DISCOVERY_URL:
+      from_secret: PROD_KEYCLOAK_DISCOVERY_URL
+    PROD_KEYCLOAK_SECRET:
+      from_secret: PROD_KEYCLOAK_SECRET
+    PROD_KUBE_SERVER:
+      from_secret: PROD_KUBE_SERVER
+    PROD_KUBE_TOKEN:
+      from_secret: PROD_KUBE_TOKEN
+    URL: analysis-staging.dq.homeoffice.gov.uk
+  when:
+    event:
+    - promote
+    target:
+    - production
+
+...
