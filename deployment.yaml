@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: opensslsidekick
-          image: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:master
+          image: quay.io/ukhomeofficedigital/dq-haproxy-openssl-sidekick:b31
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true
@@ -76,7 +76,7 @@ spec:
             - 60s
 
         - name: proxy
-          image: quay.io/ukhomeofficedigital/dq-nginx-proxy-redirect:b65
+          image: quay.io/ukhomeofficedigital/dq-nginx-proxy-redirect:b96
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
