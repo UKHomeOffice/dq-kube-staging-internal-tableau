@@ -21,9 +21,10 @@ spec:
   - host: {{ .URL }}
     http:
       paths:
+      - path: /
+      - pathType: ImplementationSpecific
       - backend:
           service:
             name: staginginternaltableau
             port:
               name: https
-        path: /
