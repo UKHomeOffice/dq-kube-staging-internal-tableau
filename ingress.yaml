@@ -24,5 +24,6 @@ spec:
       - backend:
           service:
             name: staginginternaltableau
-            port: https
+            port:
+              name: https
         path: /
