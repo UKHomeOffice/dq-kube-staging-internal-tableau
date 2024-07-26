@@ -22,6 +22,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: staginginternaltableau
-          servicePort: https
+          service:
+            name: staginginternaltableau
+            Port: https
         path: /
