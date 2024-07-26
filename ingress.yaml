@@ -22,8 +22,8 @@ spec:
     http:
       paths:
         - path: /
-        - pathType: ImplementationSpecific
-        - backend:
+          pathType: ImplementationSpecific
+          backend:
             service:
               name: staginginternaltableau
               port:
