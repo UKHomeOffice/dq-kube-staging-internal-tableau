@@ -40,7 +40,7 @@ spec:
           ports:
             - name: http
               containerPort: 8081
-          image: quay.io/keycloak/keycloak-gatekeeper:8.0.2
+          image: quay.io/keycloak/keycloak-gatekeeper:10.0.0
           securityContext:
             runAsNonRoot: true
           resources:
@@ -76,7 +76,7 @@ spec:
             - 60s
 
         - name: proxy
-          image: quay.io/ukhomeofficedigital/dq-nginx-proxy-redirect:b96
+          image: quay.io/ukhomeofficedigital/dq-nginx-proxy-redirect:b265
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
